@@ -1,0 +1,27 @@
+{
+  "name": "myunconvetionaltastes",
+  "version": "1.0.0",
+  "description": "How unconventional are your tastes?",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathieu-anderson/myUnconventionalTastes.git"
+  },
+  "author": "Mathieu Anderson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathieu-anderson/myUnconventionalTastes/issues"
+  },
+  "homepage": "https://github.com/mathieu-anderson/myUnconventionalTastes#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "knex": "^0.12.6",
+    "path": "^0.12.7"
+  }
+}
