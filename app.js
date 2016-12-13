@@ -6,6 +6,7 @@ var express = require('express')
 var expresshbs = require('express-handlebars')
 var path = require('path')
 var bodyParser = require('body-parser')
+var imdb = require('imdb-api');
 
 var app = express()
 
@@ -23,4 +24,12 @@ app.use(express.static(path.join(__dirname, 'public')))
 //Test route
 app.get("/", function(req, res){
   res.render("home")
+})
+
+//Test imdb-api package
+imdb.getReq({name: "matrix"}, function(err, data){
+  if (err) {console.log("Not found")}
+  var movieScore = data.rating
+  console.log(data)
+  console.log(movieScore)
 })
