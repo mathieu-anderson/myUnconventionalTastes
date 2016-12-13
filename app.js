@@ -21,15 +21,29 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')))
 
-//Test route
 app.get("/", function(req, res){
+  res.redirect("/home")
+})
+
+app.get("/home", function(req, res) {
   res.render("home")
 })
 
-//Test imdb-api package
-imdb.getReq({name: "matrix"}, function(err, data){
-  if (err) {console.log("Not found")}
-  var movieScore = data.rating
-  console.log(data)
-  console.log(movieScore)
+app.post("/home", function(req, res) {
+  var search = req.body
+  imdb.getReq(search, function(err, data){
+    if (err) {console.log("Not found")}
+    var moviePoster = data.poster
+    var moviePlot = data.plot
+    var movieScore = data.rating
+    console.log(moviePoster, moviePlot, movieScore)
+  })
 })
+
+// Test imdb-api package
+// imdb.getReq({name: "matrix"}, function(err, data){
+//   if (err) {console.log("Not found")}
+//   var movieScore = data.rating
+//   console.log(data)
+//   console.log(movieScore)
+// })
