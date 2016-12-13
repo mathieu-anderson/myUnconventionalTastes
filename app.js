@@ -7,6 +7,7 @@ var expresshbs = require('express-handlebars')
 var path = require('path')
 var bodyParser = require('body-parser')
 var imdb = require('imdb-api');
+var _ = require('lodash');
 
 var app = express()
 
@@ -33,10 +34,14 @@ app.post("/home", function(req, res) {
   var search = req.body
   imdb.getReq(search, function(err, data){
     if (err) {console.log("Not found")}
-    var moviePoster = data.poster
-    var moviePlot = data.plot
-    var movieScore = data.rating
-    console.log(moviePoster, moviePlot, movieScore)
+    var movieObject = data
+    var resultObject = _.pick(movieObject, ["poster", "plot", "rating"])
+    console.log(resultObject )
+    // var moviePoster = data.poster
+    // var moviePlot = data.plot
+    // var movieScore = data.rating
+    // return
+    // console.log(moviePoster, moviePlot, movieScore)
   })
 })
 
