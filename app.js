@@ -11,17 +11,16 @@ var app = express()
 
 module.exports = app;
 
-
 //Handlebars engine
 app.engine('handlebars', expresshbs({defaultLayout: 'main'}))
 app.set('view engine', 'handlebars')
 
 //Body-parser makes a JSON body object out of request
 app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({ extended: false }))
-// app.use(express.static(path.join(__dirname, 'public')))
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, 'public')))
 
-
+//Test route
 app.get("/", function(req, res){
-  res.send("hello")
+  res.render("home")
 })
