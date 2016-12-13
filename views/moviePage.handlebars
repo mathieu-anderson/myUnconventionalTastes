@@ -1,5 +1,10 @@
-<h1>Result</h1>
+<h1>What's your take on this one?</h1>
 
-<p>{{poster}}</p>
+<p><img src="{{poster}}" /></p>
 <p>{{plot}}</p>
 <p>{{rating}}</p>
+
+<form class="myResult" action="/home/comparison" method="post">
+  <input type="integer" placeholder="what's your rating?" name="myRating">
+  <input type="submit" value="compare">
+</form>

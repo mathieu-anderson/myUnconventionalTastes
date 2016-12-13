@@ -30,19 +30,19 @@ app.get("/home", function(req, res) {
   res.render("home")
 })
 
-app.post("/home", function(req, res) {
+app.post("/home/result", function(req, res) {
   var search = req.body
   imdb.getReq(search, function(err, data){
     if (err) {console.log("Not found")}
     var movieObject = data
     var resultObject = _.pick(movieObject, ["poster", "plot", "rating"])
-    console.log(resultObject )
-    // var moviePoster = data.poster
-    // var moviePlot = data.plot
-    // var movieScore = data.rating
-    // return
-    // console.log(moviePoster, moviePlot, movieScore)
+  res.render("moviePage", resultObject)
   })
+})
+
+app.post("/home/comparison", function(req, res) {
+  console.log(req.body)
+  res.render("comparisonPage", req.body)
 })
 
 // Test imdb-api package
