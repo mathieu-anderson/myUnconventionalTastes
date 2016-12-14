@@ -33,22 +33,27 @@ app.get("/home", function(req, res) {
 app.post("/home/result", function(req, res) {
   var search = req.body
   imdb.getReq(search, function(err, data){
-    if (err) {console.log("Not found")}
+    if (err) {res.redirect("/home/error")}
     var movieObject = data
-    var resultObject = _.pick(movieObject, ["poster", "plot", "rating"])
+    var resultObject = _.pick(movieObject, ["title", "poster", "plot", "rating"])
   res.render("moviePage", resultObject)
   })
 })
 
-app.post("/home/comparison", function(req, res) {
-  console.log(req.body)
-  res.render("comparisonPage", req.body)
+app.get("/home/error", function(req, res){
+  res.send("Not found :|")
 })
 
-// Test imdb-api package
-// imdb.getReq({name: "matrix"}, function(err, data){
-//   if (err) {console.log("Not found")}
-//   var movieScore = data.rating
-//   console.log(data)
-//   console.log(movieScore)
-// })
+app.post("/home/comparison", function(req, res) {
+  var myRating = Number(req.body.myRating)
+  var imdbRating = Number(req.body.imdbRating)
+
+  if (myRating > imdbRating + 1 ) {
+    res.render("greenComparisonPage", req.body)
+  }
+  else if (myRating < imdbRating - 1) {
+    res.render("redComparisonPage", req.body)
+  }
+  else res.render("greyComparisonPage", req.body)
+
+})
