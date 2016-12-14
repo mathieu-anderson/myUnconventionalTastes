@@ -1,7 +1,3 @@
-// var Knex = require("knex")
-// var knexConfig = require("./knexfile.js").development;
-// var knex = Knex(knexConfig)
-
 var express = require('express')
 var expresshbs = require('express-handlebars')
 var path = require('path')
@@ -10,6 +6,10 @@ var imdb = require('imdb-api');
 var _ = require('lodash');
 
 var app = express()
+
+var Knex = require("knex")
+var knexConfig = require("./knexfile.js").development;
+var knex = Knex(knexConfig)
 
 module.exports = app;
 
