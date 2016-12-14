@@ -36,7 +36,6 @@ app.get("/home", function(req, res) {
 
 app.post("/home/result", function(req, res) {
     var search = req.body
-    console.log(search)
     imdb.getReq(search, function(err, data) {
         if (err) {
             res.redirect("/home/")
