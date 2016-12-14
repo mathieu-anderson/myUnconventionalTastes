@@ -61,16 +61,20 @@ app.post("/home/comparison", function(req, res) {
     } else res.render("greyComparisonPage", req.body)
 })
 
+app.get("/home/profile", function(req, res) {
+  knex("profile")
+      .select("*")
+      .then(dataArray => {
+              var dataObject = {profile: dataArray}
+              res.render("userProfile", dataObject)
+      })
+      .catch(error => console.log(error))
+})
+
 app.post("/home/profile", function(req, res) {
     var movieRating = req.body
     knex("profile")
         .insert(movieRating)
-        .select("*")
-        .then(movieRatingArray => {
-            var data = {
-                profile: movieRatingArray
-            }
-            res.render("userProfile", data)
-                .catch(error => console.log(error))
-        })
+        .then(res.redirect("/home/profile"))
+        .catch(error => console.log(error))
 })
