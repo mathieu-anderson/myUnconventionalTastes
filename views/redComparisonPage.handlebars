@@ -6,6 +6,12 @@
 <p><font color ="red">My rating : {{myRating}}</font></p>
 
 <p>What a savage critic!</p>
-<p><a href="/home/profile">Save your result!</a></p>
+<form class="saveResult" action="/home/profile" method="post">
+  <input type="hidden" name="title" value="{{title}}">
+  <input type="hidden" name="imdb_rating" value="{{imdbRating}}">
+  <input type="hidden" name="your_rating" value="{{myRating}}">
+  <input type="submit" name="" value="Save your result!">
+</form>
+
 <br><br>
 <a href="/home">Again?</a>

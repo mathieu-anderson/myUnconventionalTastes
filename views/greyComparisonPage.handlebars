@@ -5,7 +5,12 @@
 <p><font color ="grey">My rating : {{myRating}}</font></p>
 
 <p>How in sync with the hivemind!</p>
+<form class="saveResult" action="/home/profile" method="post">
+  <input type="hidden" name="title" value="{{title}}">
+  <input type="hidden" name="imdb_rating" value="{{imdbRating}}">
+  <input type="hidden" name="your_rating" value="{{myRating}}">
+  <input type="submit" name="" value="Save your result!">
+</form>
 
-<p><a href="/home/profile">Save your result!</a></p>
 <br><br>
 <a href="/home">Again?</a>

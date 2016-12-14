@@ -4,7 +4,13 @@
 <p>IMDB rating : {{imdbRating}}</p>
 <p><font color ="green">My rating : {{myRating}}</font></p>
 
-<p>What a discerning gentleperson!</p>
-<p><a href="/home/profile">Save your result!</a></p>
+<p>What a discerning enthusiast!</p>
+<form class="saveResult" action="/home/profile" method="post">
+  <input type="hidden" name="title" value="{{title}}">
+  <input type="hidden" name="imdb_rating" value="{{imdbRating}}">
+  <input type="hidden" name="your_rating" value="{{myRating}}">
+  <input type="submit" name="" value="Save your result!">
+</form>
+
 <br><br>
 <a href="/home">Again?</a>
