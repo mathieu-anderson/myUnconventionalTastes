@@ -36,18 +36,17 @@ app.get("/home", function(req, res) {
 
 app.post("/home/result", function(req, res) {
     var search = req.body
+    console.log(search)
     imdb.getReq(search, function(err, data) {
         if (err) {
-            res.redirect("/home/error")
+            res.redirect("/home/")
         }
-        var movieObject = data
-        var resultObject = _.pick(movieObject, ["title", "poster", "plot", "rating"])
-        res.render("moviePage", resultObject)
+        else {
+            var movieObject = data
+            var resultObject = _.pick(movieObject,  ["title", "poster", "plot", "rating"])
+            res.render("moviePage", resultObject)
+        }
     })
-})
-
-app.get("/home/error", function(req, res) {
-    res.send("Not found :|")
 })
 
 app.post("/home/comparison", function(req, res) {

@@ -1,12 +1,25 @@
 <h1>What's your take on this one?</h1>
 
-<p><img src="{{poster}}" /></p>
-<p>{{title}}</p>
-<p>{{plot}}</p>
 
-<form class="myResult" action="/home/comparison" method="post">
-  <input type="hidden" name="imdbRating" value="{{rating}}">
-  <input type="hidden" name="title" value="{{title}}">
-  <input type="integer" placeholder="what's your rating?" name="myRating">
-  <input type="submit" value="compare">
-</form>
+
+
+</center>
+<br />
+<table>
+    <tr>
+        <td valign="top"><img src="{{poster}}" /></td>
+        <td valign="top">
+            <h2><i>{{title}}</i></h2><br />{{plot}}</td>
+    </tr>
+</table>
+<br>
+
+<center>
+
+    <form class="myResult" action="/home/comparison" method="post">
+        <input type="hidden" name="imdbRating" value="{{rating}}">
+        <input type="hidden" name="title" value="{{title}}">
+        <input type="integer" placeholder="what's your rating?" name="myRating"><br />
+        <input type="submit" value="compare">
+    </form>
+</center>
