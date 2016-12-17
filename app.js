@@ -76,3 +76,19 @@ app.post("/home/profile", function(req, res) {
         .then(res.redirect("/home/profile"))
         .catch(error => console.log(error))
 })
+
+app.get("/home/:id/profile", function(req,res) {
+  var ID = req.params.id
+  knex("users_movies_ratings")
+  //join the users_movies_ratings table to the movies table and the users table
+  //get user_name from the users table + the corresponding titles / ratings from the movies table
+    .join("movies", "movies.id", "=", "users_movies_ratings.movie_id")
+    .join("users", "users.id", "=", "users_movies_ratings.user_id")
+    .select("*")
+    .where("user_id", ID)
+  //render the data into the profile template
+    .then(data => {
+      res.render("profile", {profile: data, user_name: data[0].user_name})
+    })
+    .catch(error => console.log(error))
+})
