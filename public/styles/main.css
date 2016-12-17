@@ -1,16 +1,16 @@
 body {
-  border-color: black
+  border-color: black;
   color: #555;
   margin-left: 20%;
   margin-right: 20%;
   margin-bottom: 10%;
   margin-top: 5%;
   line-height: 1.7;
+  height: 100vh;
 
 }
 
 h1 {
-  border-color: black
   color: #555;
 }
 
