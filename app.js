@@ -77,7 +77,7 @@ app.post("/home/profile", function(req, res) {
         .catch(error => console.log(error))
 })
 
-app.get("/home/:id/profile", function(req,res) {
+app.get("/home/user/:id", function(req,res) {
   var ID = req.params.id
   knex("users_movies_ratings")
   //join the users_movies_ratings table to the movies table and the users table
@@ -92,3 +92,10 @@ app.get("/home/:id/profile", function(req,res) {
     })
     .catch(error => console.log(error))
 })
+
+app.get("/home/register", function (req, res){
+  res.render("newUser")
+})
+
+// app.post("/home/user/:id", function (req, res){
+// })
