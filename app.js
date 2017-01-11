@@ -88,6 +88,7 @@ app.get("/home/user/:id", function(req,res) {
     .where("user_id", ID)
   //render the data into the profile template
     .then(data => {
+      console.log(data)
       res.render("profile", {profile: data, user_name: data[0].user_name})
     })
     .catch(error => console.log(error))
