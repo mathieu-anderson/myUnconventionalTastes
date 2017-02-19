@@ -1,0 +1,19 @@
+<h1>My profile</h1>
+
+<table>
+    <tr>
+        <th>Title</th>
+        <th>IMDB rating</th>
+        <th>Your rating</th>
+    </tr>
+    {{#each profile}}
+        <tr>
+            <td>{{title}}</td>
+            <td>{{imdb_rating}}</td>
+            <td>{{your_rating}}</td>
+        </tr>
+    {{/each}}
+</table>
+
+<br><br>
+<a href="/home">Again?</a>
